@@ -1,21 +1,15 @@
-// App.js
+// App.js (with Next.js routing system)
 "use client"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Map from '../components/Map';
-import Profile from '../components/Profile';
-import Navbar from '../components/Navbar';
-import NFCComponent from '@/components/NFCComponent';
+import { useRouter } from 'next/router';
+import NavbarPage from '@/pages/NavbarPage';
+import MapPage from '@/pages/MapPage';
 
 const App = () => {
     return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Map />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/nfc" element={<NFCComponent />} />
-            </Routes>
-        </Router>
+        <>
+            <NavbarPage />
+            <MapPage />
+        </>
     );
 };
 

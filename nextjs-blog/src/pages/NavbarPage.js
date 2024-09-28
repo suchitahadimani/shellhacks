@@ -1,7 +1,6 @@
-"use client"
+// components/Navbar.js
 import Link from 'next/link';
-
-const Navbar = () => {
+const NavbarPage = () => {
     return (
         <nav style={{
             display: 'flex',
@@ -17,4 +16,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default NavbarPage;
