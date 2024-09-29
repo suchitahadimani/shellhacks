@@ -12,9 +12,15 @@ const categoryToCardMap = {
     Shopping: "Capital One"
 };
 
+const getRandomCategoryCardCombo = () => {
+    const categories = Object.keys(categoryToCardMap);
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    const correspondingCard = categoryToCardMap[randomCategory];
+    return { randomCategory, correspondingCard };
+};
+
 const NFCComponent = () => {
     const [currentMessage, setCurrentMessage] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState(Object.keys(categoryToCardMap)[0]); // Default to the first category
 
     const log = (message) => {
         setCurrentMessage(message); 
@@ -37,6 +43,9 @@ const NFCComponent = () => {
                 log(`> Serial Number: ${serialNumber}`);
                 log(`> Records: (${message.records.length})`);
 
+                // Get a random category and corresponding card
+                const { randomCategory, correspondingCard } = getRandomCategoryCardCombo();
+
                 // Prepare data to send to the API
                 const data = {
                     serialNumber: serialNumber,
@@ -45,7 +54,7 @@ const NFCComponent = () => {
                         mediaType: record.mediaType,
                         data: record.data,
                     })),
-                    category: selectedCategory, // Include the selected category
+                    category: randomCategory, // Include the random category
                     timestamp: new Date().toISOString(),
                 };
 
@@ -55,8 +64,7 @@ const NFCComponent = () => {
                     log('API Response: ' + JSON.stringify(apiResponse)); 
                 } catch (error) {
                     log(error.message);
-                    const bestCard = categoryToCardMap[selectedCategory];
-                    setCurrentMessage(`Since you chose ${selectedCategory}, the best card is ${bestCard}.`);
+                    setCurrentMessage(`Since you scanned a tag, the best card is ${correspondingCard} for ${randomCategory}.`);
                 }
             });
         } catch (error) {
@@ -78,21 +86,6 @@ const NFCComponent = () => {
             textAlign: 'center',
         }}>
             <h2>NFC Reader!</h2>
-            <div>
-                <label htmlFor="category-select">Select Category:</label>
-                <select 
-                    id="category-select" 
-                    value={selectedCategory} 
-                    onChange={(e) => setSelectedCategory(e.target.value)} 
-                    style={{ margin: '10px', padding: '5px' }}
-                >
-                    {Object.keys(categoryToCardMap).map((category) => (
-                        <option key={category} value={category}>
-                            {category}
-                        </option>
-                    ))}
-                </select>
-            </div>
             <h3>Result:</h3>
             <p>{currentMessage}</p> 
         </div>
