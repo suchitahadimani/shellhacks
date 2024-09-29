@@ -6,8 +6,8 @@ const NFCComponent = () => {
   const [currentMessage, setCurrentMessage] = useState('');
 
   const log = (message) => {
-    setCurrentMessage(message); // Update the current message state
-    console.log(message); // For debugging purposes
+    setCurrentMessage(message); 
+    console.log(message); 
   };
 
   const handleScan = async () => {
@@ -42,7 +42,7 @@ const NFCComponent = () => {
           const apiResponse = await sendDataToApi(data);
           log('API Response: ' + JSON.stringify(apiResponse)); // Update currentMessage with API response
         } catch (error) {
-          log('Error sending data to API: ' + error.message); // Update currentMessage on error
+          log(error.message); // Update currentMessage on error
         }
       });
     } catch (error) {
