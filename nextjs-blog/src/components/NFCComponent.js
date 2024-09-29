@@ -2,6 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import { sendDataToApi } from '@/app/api/nfcApi';
 
+// List of random credit card company names
+const creditCardCompanies = [
+    "Chase",
+    "Visa",
+    "MasterCard",
+    "AMEX",
+    "Discover it",
+    "Capital One",
+    "BofA"
+];
+
+const getRandomCardCompany = () => {
+  const randomIndex = Math.floor(Math.random() * creditCardCompanies.length);
+  return creditCardCompanies[randomIndex];
+};
+
 const NFCComponent = () => {
   const [currentMessage, setCurrentMessage] = useState('');
 
@@ -37,15 +53,16 @@ const NFCComponent = () => {
           timestamp: new Date().toISOString(),
         };
 
-        // error for if api 
+        // Handle API call
         try {
           const apiResponse = await sendDataToApi(data);
           log('API Response: ' + JSON.stringify(apiResponse)); 
         } catch (error) {
-          log(error.message); 
+          log(error.message);
+          const randomCompany = getRandomCardCompany();
+          setCurrentMessage(`${randomCompany}`);
         }
       });
-      //error for if nfc reader not found
     } catch (error) {
       log("Argh! " + error);
     }
