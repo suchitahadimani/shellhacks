@@ -37,14 +37,15 @@ const NFCComponent = () => {
           timestamp: new Date().toISOString(),
         };
 
-        // Call the API with the data
+        // error for if api 
         try {
           const apiResponse = await sendDataToApi(data);
-          log('API Response: ' + JSON.stringify(apiResponse)); // Update currentMessage with API response
+          log('API Response: ' + JSON.stringify(apiResponse)); 
         } catch (error) {
-          log(error.message); // Update currentMessage on error
+          log(error.message); 
         }
       });
+      //error for if nfc reader not found
     } catch (error) {
       log("Argh! " + error);
     }
