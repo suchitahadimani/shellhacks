@@ -1,22 +1,22 @@
 export const sendDataToApi = async (data) => {
     try {
-        // Manually define your prompt
-        const prompt = `If serial number for the following nfc card reading is not null return in a direct response which credit card would be the best \
-        for buying gas: ${JSON.stringify(data)}`;
-
-        // Combine the prompt with the data
-        const requestData = {
-            ...data,
-            prompt: prompt, // Add the prompt here
-        };
+        const prompt = `If serial number for the following nfc card reading is not null return in a direct response which credit card would be the best for buying gas: ${JSON.stringify(data)}`;
 
         const response = await fetch('https://api.perplexity.ai/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer PERPLEXITY_API`, // Use your actual API key here
+                'Authorization': `Bearer PERPLEXITY_API`, 
             },
-            body: JSON.stringify(requestData),
+            body: JSON.stringify({
+                model: "llama-3.1-sonar-small-128k-online",
+                messages: [
+                    {
+                        role: "system",
+                        content: JSON.stringify(prompt)
+                    }
+                ]
+            })
         });
 
         if (!response.ok) {
