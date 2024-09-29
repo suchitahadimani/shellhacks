@@ -12,6 +12,7 @@
     "@auth0/nextjs-auth0": "^3.5.0",
     "dotenv": "^16.4.5",
     "firebase": "^10.13.2",
+    "firebase-admin": "^12.5.0",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",

@@ -24,6 +24,14 @@ const NFCComponent = () => {
       ndef.addEventListener("reading", ({ message, serialNumber }) => {
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
+
+        message.records.forEach((record, index) => {
+          log(`  Record ${index + 1}:`);
+          log(`    Type: ${record.recordType}`);
+          log(`    ID: ${record.id}`);
+          log(`    Payload: ${new TextDecoder().decode(record.data)}`);
+          log(`    Encoding: ${record.encoding}`);
+        });
       });
     } catch (error) {
       log("Argh! " + error);
