@@ -16,7 +16,7 @@ export const sendDataToApi = async (data) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`, 
+                'Authorization': `Bearer ${PERPLEXITY_API}`, 
             },
             body: JSON.stringify(m_body) 
         });
@@ -29,7 +29,7 @@ export const sendDataToApi = async (data) => {
 
         return await response.json();
     } catch (error) {
-        alert('Debug info: ' + JSON.stringify(m_body, null, 2) + JSON.stringify(apiKey));
+        alert('Debug info: ' + JSON.stringify(PERPLEXITY_API) + JSON.stringify(apiKey));
 
         throw new Error(error.message);
     }
