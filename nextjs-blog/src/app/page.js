@@ -1,16 +1,17 @@
-// App.js (with Next.js routing system)
-"use client"
-import { useRouter } from 'next/router';
-import NavbarPage from '@/pages/NavbarPage';
+"use client"; // Ensure this file is a client component
+import Navbar from '@/components/Navbar';
 import MapPage from '@/pages/MapPage';
 
-const App = () => {
+const App = () => { 
     return (
         <>
-            <NavbarPage />
+        
+            <Navbar />
             <MapPage />
+
         </>
     );
 };
 
+// Don't forget to export the component
 export default App;

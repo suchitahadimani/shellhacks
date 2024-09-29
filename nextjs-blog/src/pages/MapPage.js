@@ -1,7 +1,12 @@
+"use client"
 import Map from '../components/Map';
 
 const MapPage = () => {
-    return <Map />;
+    return (
+    <div>
+        <Map />
+    </div>
+    );
 };
 
 export default MapPage;
