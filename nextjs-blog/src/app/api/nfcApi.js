@@ -10,20 +10,13 @@ export const sendDataToApi = async (data) => {
         ]
     };
 
-    console.log(m_body)
-    console.log("Sending now....")
-
 
     try {
-        
-
-        
-
         const response = await fetch('https://api.perplexity.ai/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${apiKey}`, 
+                'Authorization': `Bearer ${apiKey}`, 
             },
             body: JSON.stringify(m_body) 
         });
@@ -36,7 +29,7 @@ export const sendDataToApi = async (data) => {
 
         return await response.json();
     } catch (error) {
-        alert('Debug info: ' + JSON.stringify(m_body, null, 2));
+        alert('Debug info: ' + JSON.stringify(m_body, null, 2) + JSON.stringify(apiKey));
 
         throw new Error(error.message);
     }
