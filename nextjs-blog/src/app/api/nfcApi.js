@@ -11,7 +11,7 @@ export const sendDataToApi = async (data) => {
             ]
         };
 
-        console.log(body)
+        console.log(m_body)
         console.log("Sending now....")
 
         const response = await fetch('https://api.perplexity.ai/chat/completions', {
