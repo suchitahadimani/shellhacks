@@ -19,7 +19,7 @@ const NFCComponent = () => {
       log("> Scan started");
 
       ndef.addEventListener("readingerror", () => {
-        log("Argh! Cannot read data from the NFC tag. Try another one?");
+        log("Cannot read data from the NFC tag. Try another one?");
       });
 
       ndef.addEventListener("reading", async ({ message, serialNumber }) => {
@@ -63,8 +63,8 @@ const NFCComponent = () => {
       height: '100vh',
       textAlign: 'center',
     }}>
-      <h2>NFC Operations</h2>
-      <h3>Current Result:</h3>
+      <h2>NFC Reader!</h2>
+      <h3>Result:</h3>
       <p>{currentMessage}</p> {/* Display the current message */}
     </div>
   );
