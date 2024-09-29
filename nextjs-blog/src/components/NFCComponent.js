@@ -64,7 +64,7 @@ const NFCComponent = () => {
                     log('API Response: ' + JSON.stringify(apiResponse)); 
                 } catch (error) {
                     log(error.message);
-                    setCurrentMessage(`Since you scanned a tag, the best card is ${correspondingCard} for ${randomCategory}.`);
+                    setCurrentMessage(`The best card is ${correspondingCard} for ${randomCategory}.`);
                 }
             });
         } catch (error) {
