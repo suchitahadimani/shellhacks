@@ -29,6 +29,6 @@ export const sendDataToApi = async (data) => {
 
         return await response.json();
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(error.message, m_body, JSON.stringify(m_body));
     }
 };
