@@ -33,8 +33,6 @@ export const sendDataToApi = async (data) => {
 
         return await response.json();
     } catch (error) {
-        alert('Debug info: ' + JSON.stringify(apiKey));
-
         throw new Error(error.message);
     }
 };

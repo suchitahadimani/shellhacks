@@ -83,7 +83,7 @@ const NFCComponent = () => {
     }}>
       <h2>NFC Reader!</h2>
       <h3>Result:</h3>
-      <p>{currentMessage}</p> {/* Display the current message */}
+      <p>{currentMessage}</p> 
     </div>
   );
 };
